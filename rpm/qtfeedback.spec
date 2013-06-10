@@ -38,15 +38,17 @@ make %{?_smp_flags}
 %install
 rm -rf %{buildroot}
 %qmake5_install
+
+
 # Fix wrong path in pkgconfig files
-#find %{buildroot}%{_libdir}/pkgconfig -type f -name '*.pc' \
-#-exec perl -pi -e "s, -L%{_builddir}/?\S+,,g" {} \;
+find %{buildroot}%{_libdir}/pkgconfig -type f -name '*.pc' \
+  exec perl -pi -e "s, -L%{_builddir}/?\S+,,g" {} \;
 # Fix wrong path in prl files
-#find %{buildroot}%{_libdir} -type f -name '*.prl' \
-#-exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
+find %{buildroot}%{_libdir} -type f -name '*.prl' \
+-exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
 # Remove unneeded .la files
-#rm -f %{buildroot}/%{_libdir}/*.la
-#%fdupes %{buildroot}/%{_includedir}
+rm -f %{buildroot}/%{_libdir}/*.la
+%fdupes %{buildroot}/%{_includedir}
 
 
 #### Pre/Post section
@@ -57,7 +59,18 @@ rm -rf %{buildroot}
 /sbin/ldconfig
 
 #### File section
-
 %files
 %defattr(-,root,root,-)
+%{_libdir}/libQt0Feedback.so.0
+%{_libdir}/libQt0Feedback.so.0.*
+%{_libdir}/qt5/qml/
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/libQt0Feedback.so
+%{_libdir}/libQt0Feedback.prl
+%{_libdir}/pkgconfig/*
+%{_includedir}/qt5/*
+%{_datadir}/qt5/mkspecs/
+%{_libdir}/cmake/
 
