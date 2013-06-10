@@ -21,7 +21,7 @@ mobile and embedded systems without rewriting the source code.
 .
 This package contains the Qt Feedback library
 
-package devel
+%package devel
 Summary:    Qt QtFeedback - development files
 Group:      Qt/Qt
 Requires:   %{name} = %{version}-%{release}
