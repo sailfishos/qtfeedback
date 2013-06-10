@@ -21,6 +21,17 @@ mobile and embedded systems without rewriting the source code.
 .
 This package contains the Qt Feedback library
 
+package devel
+Summary:    Qt QtFeedback - development files
+Group:      Qt/Qt
+Requires:   %{name} = %{version}-%{release}
+
+%description devel
+Qt is a cross-platform application and UI framework. Using Qt, you can
+write web-enabled applications once and deploy them across desktop,
+mobile and embedded systems without rewriting the source code.
+.
+This package contains the QtFeedback module development files
 
 
 #### Build section
