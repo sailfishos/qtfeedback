@@ -1,6 +1,9 @@
 TARGET = QtFeedback
 QT = core
 
+MODULE_PLUGIN_TYPES = \
+    feedback
+
 QMAKE_DOCS = $$PWD/../../doc/qtfeedback.qdocconf
 
 load(qt_module)

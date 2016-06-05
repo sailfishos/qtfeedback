@@ -69,14 +69,14 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 
 %files
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Feedback.so.0
-%{_libdir}/libQt0Feedback.so.0.*
+%{_libdir}/libQt5Feedback.so.0
+%{_libdir}/libQt5Feedback.so.0.*
 %{_libdir}/qt5/qml/
 
 %files devel
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Feedback.so
-%{_libdir}/libQt0Feedback.prl
+%{_libdir}/libQt5Feedback.so
+%{_libdir}/libQt5Feedback.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
 %{_datadir}/qt5/mkspecs/
