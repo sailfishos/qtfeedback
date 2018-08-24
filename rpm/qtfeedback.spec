@@ -39,7 +39,7 @@ This package contains the QtFeedback module development files
 
 %build
 touch .git # To make sure syncqt is used
-%qmake5 CONFIG+=package
+%qmake5 CONFIG+=package multimedia_disabled=yes
 make %{?_smp_mflags}
 
 %install
