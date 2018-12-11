@@ -43,7 +43,7 @@ This package contains the QtFeedback module development files
 export QTDIR=/usr/share/qt5
 touch .git # To make sure syncqt is used
 
-%qmake5 CONFIG+=package
+%qmake5 CONFIG+=package VERSION=`echo %{version} | sed 's/+.*//'`
 make %{?_smp_mflags}
 
 %install
@@ -76,16 +76,13 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 #### File section
 %files
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Feedback.so.0
-%{_libdir}/libQt0Feedback.so.0.*
+%{_libdir}/libQt5Feedback.so*
 %{_libdir}/qt5/qml/
 
 %files devel
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Feedback.so
-%{_libdir}/libQt0Feedback.prl
+%{_libdir}/libQt5Feedback.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
 %{_datadir}/qt5/mkspecs/
 %{_libdir}/cmake/
-
