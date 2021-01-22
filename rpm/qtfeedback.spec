@@ -2,9 +2,8 @@ Name:       qt5-qtfeedback
 Summary:    Qt Feedback
 Version:    5.0.2
 Release:    1%{?dist}
-Group:      Qt/Qt
-License:    LGPLv2.1 with exception or GPLv3
-URL:        http://qt.nokia.com
+License:    LGPLv2 with exception or GPLv3 or Qt Commercial
+URL:        http://www.qt.io
 Source0:    %{name}-%{version}.tar.bz2
 BuildRequires:  qt5-qtcore-devel
 BuildRequires:  qt5-qtgui-devel
@@ -26,7 +25,6 @@ This package contains the Qt Feedback library
 
 %package devel
 Summary:    Qt QtFeedback - development files
-Group:      Qt/Qt
 Requires:   %{name} = %{version}-%{release}
 
 %description devel
@@ -38,7 +36,7 @@ This package contains the QtFeedback module development files
 
 %package doc
 Summary:    Qt QtFeedback - documentation
-Group:      Qt/Qt
+License:    GNU Free Documentation License or Qt Commercial
 Requires:   %{name} = %{version}-%{release}
 
 %description doc
@@ -87,6 +85,9 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 
 %files
 %defattr(-,root,root,-)
+%license LICENSE.LGPL
+%license LGPL_EXCEPTION.txt
+%license LICENSE.GPL
 %{_libdir}/libQt5Feedback.so.0
 %{_libdir}/libQt5Feedback.so.0.*
 %{_libdir}/qt5/qml/
@@ -101,5 +102,6 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 %{_libdir}/cmake/
 
 %files doc
+%license LICENSE.FDL
 %defattr(-,root,root,-)
 %{_docdir}/qt5/*
