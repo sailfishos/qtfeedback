@@ -53,11 +53,10 @@ This package contains the QtFeedback module documentation
 %build
 touch .git # To make sure syncqt is used
 %qmake5 CONFIG+=package multimedia_disabled=yes
-make %{?_smp_mflags}
+%make_build
 make docs
 
 %install
-rm -rf %{buildroot}
 %qmake5_install install_qch_docs
 
 # Fix wrong path in pkgconfig files
@@ -70,7 +69,7 @@ find %{buildroot}%{_libdir} -type f -name '*.prl' \
 rm -f %{buildroot}/%{_libdir}/*.la
 
 # We don't need qt5/Qt/
-rm -rf %{buildroot}/%{_includedir}/qt5/Qt
+rm -rf %{buildroot}/%{_qt5_includedir}/Qt
 
 # Replace the old Qt0Feedback.pc with Qt5Feedback.pc
 cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgconfig/Qt0Feedback.pc
@@ -88,20 +87,20 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 %license LICENSE.LGPL
 %license LGPL_EXCEPTION.txt
 %license LICENSE.GPL
-%{_libdir}/libQt5Feedback.so.0
-%{_libdir}/libQt5Feedback.so.0.*
-%{_libdir}/qt5/qml/
+%{_qt5_libdir}/libQt5Feedback.so.0
+%{_qt5_libdir}/libQt5Feedback.so.0.*
+%{_qt5_archdatadir}/qml/
 
 %files devel
 %defattr(-,root,root,-)
-%{_libdir}/libQt5Feedback.so
-%{_libdir}/libQt5Feedback.prl
-%{_libdir}/pkgconfig/*
-%{_includedir}/qt5/*
-%{_datadir}/qt5/mkspecs/
-%{_libdir}/cmake/
+%{_qt5_libdir}/libQt5Feedback.so
+%{_qt5_libdir}/libQt5Feedback.prl
+%{_qt5_libdir}/pkgconfig/*
+%{_qt5_includedir}/*
+%{_qt5_archdatadir}/mkspecs/
+%{_qt5_libdir}/cmake/
 
 %files doc
 %license LICENSE.FDL
 %defattr(-,root,root,-)
-%{_docdir}/qt5/*
+%{_qt5_docdir}/*
