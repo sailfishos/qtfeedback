@@ -64,7 +64,7 @@ class QDeclarativeThemeEffect : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool supported READ effectSupported)
+    Q_PROPERTY(bool supported READ effectSupported CONSTANT)
     Q_PROPERTY(Effect effect READ effect WRITE setEffect NOTIFY effectChanged)
 
     Q_CLASSINFO("DefaultMethod", "play()")

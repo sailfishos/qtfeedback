@@ -3,7 +3,7 @@ Summary:    Qt Feedback
 Version:    5.0.2
 Release:    1%{?dist}
 License:    LGPLv2 with exception or GPLv3 or Qt Commercial
-URL:        http://www.qt.io
+URL:        https://github.com/sailfishos/qtfeedback
 Source0:    %{name}-%{version}.tar.bz2
 BuildRequires:  qt5-qtcore-devel
 BuildRequires:  qt5-qtgui-devel
@@ -53,11 +53,10 @@ This package contains the QtFeedback module documentation
 %build
 touch .git # To make sure syncqt is used
 %qmake5 CONFIG+=package multimedia_disabled=yes
-make %{?_smp_mflags}
+%make_build
 make docs
 
 %install
-rm -rf %{buildroot}
 %qmake5_install install_qch_docs
 
 # Fix wrong path in pkgconfig files
@@ -77,14 +76,10 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 
 %fdupes %{buildroot}/%{_includedir}
 
-
-%post
-/sbin/ldconfig
-%postun
-/sbin/ldconfig
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE.LGPL
 %license LGPL_EXCEPTION.txt
 %license LICENSE.GPL
@@ -93,7 +88,6 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 %{_libdir}/qt5/qml/
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/libQt5Feedback.so
 %{_libdir}/libQt5Feedback.prl
 %{_libdir}/pkgconfig/*
@@ -103,5 +97,4 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 
 %files doc
 %license LICENSE.FDL
-%defattr(-,root,root,-)
 %{_docdir}/qt5/*
