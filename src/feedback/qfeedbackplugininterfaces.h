@@ -45,7 +45,6 @@
 #include <qfeedbackactuator.h>
 #include <qfeedbackeffect.h>
 
-QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 class Q_FEEDBACK_EXPORT QFeedbackInterface
@@ -134,6 +133,5 @@ Q_DECLARE_INTERFACE(QFeedbackThemeInterface, "com.nokia.qt.QFeedbackThemeInterfa
 Q_DECLARE_INTERFACE(QFeedbackFileInterface, "com.nokia.qt.QFeedbackFileInterface/1.0")
 
 QT_END_NAMESPACE
-QT_END_HEADER
 
 #endif // QFEEDBACKPLUGININTERFACES_H

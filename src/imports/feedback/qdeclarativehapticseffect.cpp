@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 
+#include "qdeclarativefeedbackeffect_p.h"
 #include "qdeclarativehapticseffect_p.h"
 /*!
     \qmltype HapticsEffect
@@ -222,12 +223,16 @@ QDeclarativeFeedbackActuator* QDeclarativeHapticsEffect::actuator() const
     \sa Actuator
 */
 QQmlListProperty<QDeclarativeFeedbackActuator> QDeclarativeHapticsEffect::availableActuators() {
+#if (QT_VERSION > QT_VERSION_CHECK(6,0,0))
+    return QQmlListProperty<QDeclarativeFeedbackActuator>();
+#else
     return QQmlListProperty<QDeclarativeFeedbackActuator>(this,
                                                                   0,
                                                                   0 /*appending actuators are not allowed*/,
                                                                   actuator_count,
                                                                   actuator_at,
                                                                   0 /*removing actuators are not allowed*/);
+#endif
 }
 
 int QDeclarativeHapticsEffect::actuator_count(QQmlListProperty<QDeclarativeFeedbackActuator> *prop)

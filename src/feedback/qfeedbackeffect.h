@@ -43,12 +43,12 @@
 #define QFEEDBACKEFFECT_H
 
 #include "qfeedbackglobal.h"
+#include "qfeedbackactuator.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QStringList>
 #include <QtCore/QUrl>
 
-QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 class QFeedbackActuator;
@@ -207,6 +207,5 @@ private:
 };
 
 QT_END_NAMESPACE
-QT_END_HEADER
 
 #endif // QFEEDBACKEFFECT_H

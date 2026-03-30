@@ -263,3 +263,6 @@ src/xml/lib/
 *.dep
 *.map
 work
+
+# QMake generated files
+.qmake.stash
