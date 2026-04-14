@@ -14,7 +14,6 @@ BuildRequires:  qt5-qmake
 BuildRequires:  qt5-qttools-qdoc
 BuildRequires:  qt5-qttools-qthelp-devel
 BuildRequires:  qt5-tools
-BuildRequires:  fdupes
 
 %description
 Qt is a cross-platform application and UI framework. Using Qt, you can
@@ -51,7 +50,6 @@ This package contains the QtFeedback module documentation
 %setup -q -n %{name}-%{version}
 
 %build
-touch .git # To make sure syncqt is used
 %qmake5 CONFIG+=package multimedia_disabled=yes
 %make_build
 make docs
@@ -59,22 +57,8 @@ make docs
 %install
 %qmake5_install install_qch_docs
 
-# Fix wrong path in pkgconfig files
-find %{buildroot}%{_libdir}/pkgconfig -type f -name '*.pc' \
--exec perl -pi -e "s, -L%{_builddir}/?\S+,,g" {} \;
-# Fix wrong path in prl files
-find %{buildroot}%{_libdir} -type f -name '*.prl' \
--exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
 # Remove unneeded .la files
 rm -f %{buildroot}/%{_libdir}/*.la
-
-# We don't need qt5/Qt/
-rm -rf %{buildroot}/%{_includedir}/qt5/Qt
-
-# Replace the old Qt0Feedback.pc with Qt5Feedback.pc
-cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgconfig/Qt0Feedback.pc
-
-%fdupes %{buildroot}/%{_includedir}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -92,8 +76,6 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 %{_libdir}/libQt5Feedback.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
-%{_datadir}/qt5/mkspecs/
-%{_libdir}/cmake/
 
 %files doc
 %license LICENSE.FDL

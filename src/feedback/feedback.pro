@@ -3,6 +3,9 @@ QT = core
 TEMPLATE = lib
 CONFIG += create_pc create_prl
 
+# let's avoid bumping .so version until needed
+VERSION = 0.0.0
+
 MODULE_PLUGIN_TYPES = \
     feedback
 
