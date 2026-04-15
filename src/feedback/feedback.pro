@@ -19,11 +19,11 @@ PUBLIC_HEADERS += \
     qfeedbackglobal.h \
     qfeedbackactuator.h \
     qfeedbackeffect.h \
-    qfeedbackplugininterfaces.h \
-    qfeedbackpluginsearch.h
+    qfeedbackplugininterfaces.h
 
 PRIVATE_HEADERS += qfeedbackeffect_p.h \
-                   qfeedbackplugin_p.h
+                   qfeedbackplugin_p.h \
+                   qfeedbackpluginsearch.h
 
 HEADERS =  $$PUBLIC_HEADERS $$PRIVATE_HEADERS
 
