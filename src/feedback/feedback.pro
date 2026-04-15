@@ -3,17 +3,30 @@ QT = core
 TEMPLATE = lib
 CONFIG += create_pc create_prl
 
+# let's avoid bumping .so version until needed
+VERSION = 0.0.0
+
 MODULE_PLUGIN_TYPES = \
     feedback
 
-PUBLIC_HEADERS += qfeedbackglobal.h \
-                  qfeedbackactuator.h \
-                  qfeedbackeffect.h \
-                  qfeedbackplugininterfaces.h \
-                  qfeedbackpluginsearch.h
+PUBLIC_HEADERS += \
+    QFeedbackActuator \
+    QFeedbackEffect \
+    QFeedbackFileEffect \
+    QFeedbackFileInterface \
+    QFeedbackHapticsEffect \
+    QFeedbackHapticsInterface \
+    QFeedbackInterface \
+    QFeedbackThemeInterface \
+    QtFeedback \
+    qfeedbackglobal.h \
+    qfeedbackactuator.h \
+    qfeedbackeffect.h \
+    qfeedbackplugininterfaces.h
 
 PRIVATE_HEADERS += qfeedbackeffect_p.h \
-                   qfeedbackplugin_p.h
+                   qfeedbackplugin_p.h \
+                   qfeedbackpluginsearch.h
 
 HEADERS =  $$PUBLIC_HEADERS $$PRIVATE_HEADERS
 
