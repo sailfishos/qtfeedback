@@ -6,11 +6,21 @@ CONFIG += create_pc create_prl
 MODULE_PLUGIN_TYPES = \
     feedback
 
-PUBLIC_HEADERS += qfeedbackglobal.h \
-                  qfeedbackactuator.h \
-                  qfeedbackeffect.h \
-                  qfeedbackplugininterfaces.h \
-                  qfeedbackpluginsearch.h
+PUBLIC_HEADERS += \
+    QFeedbackActuator \
+    QFeedbackEffect \
+    QFeedbackFileEffect \
+    QFeedbackFileInterface \
+    QFeedbackHapticsEffect \
+    QFeedbackHapticsInterface \
+    QFeedbackInterface \
+    QFeedbackThemeInterface \
+    QtFeedback \
+    qfeedbackglobal.h \
+    qfeedbackactuator.h \
+    qfeedbackeffect.h \
+    qfeedbackplugininterfaces.h \
+    qfeedbackpluginsearch.h
 
 PRIVATE_HEADERS += qfeedbackeffect_p.h \
                    qfeedbackplugin_p.h
